@@ -17,15 +17,23 @@ def read_text_file(file_path):
 
 if __name__ == "__main__":
     # Read text from a file
-    file_path = "example.txt"  # Change this to your file path
+    file_path = "grph.txt"  # Change this to your file path
     context = read_text_file(file_path)
     
+    print("files read ok")
     # Initialize the QA model
     qa_pipeline = create_qa_model()
     
-    # Ask a question
-    question = "Who designed the Eiffel Tower?"
-    answer = answer_question(qa_pipeline, context, question)
+
+
+    print("ask question:")
+    while True:
+        user_input = input(">> ")
+        if user_input.lower() in ("exit", "quit"):
+            print("Goodbye!")
+            break
+ 
+        # Ask a question
+        answer = answer_question(qa_pipeline, context, user_input)
     
-    print(f"Question: {question}")
-    print(f"Answer: {answer}")
+        print(f"Answer: {answer}")
